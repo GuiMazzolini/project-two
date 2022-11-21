@@ -12,7 +12,7 @@ const saltRounds = 10;
 const User = require("../models/User.model");
 
 // Require necessary (isLoggedOut and isLiggedIn) middleware in order to control access to specific routes
-const isLoggedOut = require("../middleware/isLoggedOut");
+const isLoggedOut = require("../middleware/isLoggedOut.js");
 const isLoggedIn = require("../middleware/isLoggedIn");
 
 // GET /auth/signup
