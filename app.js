@@ -23,6 +23,8 @@ const projectName = "project-two";
 
 app.locals.appTitle = `${capitalize(projectName)} created with IronLauncher`;
 
+const projectRoutes = require("./routes/project.routes");
+app.use("/", projectRoutes);
 // 👇 Start handling routes here
 
 

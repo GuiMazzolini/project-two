@@ -3,30 +3,23 @@
     <h5>Search Engine</h5>
 </div>
 
-<div class="container text-center">
-    <div class="row justify-content-evenly">
-
-        <div class="col-12 col-md-5 col-xl-3 m-1">
-            <div class="card" style="width: 18rem;">
-                <h5 class="card-title mt-1">Card title</h5>
-                <img src="../images/teste.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p>
-                <a href="#" class="btn btn-primary mb-1">Go somewhere</a>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-                <p class="card-text mt-1">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.Some quick example text to build on the card title and make up the bulk of the
-                    card's content.Some quick example text to build on the card title and make up the bulk of the
-                    card's content.Some quick example text to build on the card title and make up the bulk of the
-                    card's content.Some quick example text to build on the card title and make up the bulk of the
-                    card's content.Some quick example text to build on the card title and make up the bulk of the
-                    card's content.Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p>
+{{#each project}}
+    <div class="container text-center">
+        <div class="row justify-content-evenly">
+            <div class="col-12 col-md-5 col-xl-3 m-1">
+                <div class="card" style="width: 18rem;">
+                    <h5 class="card-title mt-1">{{name}}</h5>
+                    <img src="../public/images/teste.jpg" class="card-img-top">
+                    <div class="card-body">
+                        <p class="card-text">{{description}}</p>
+                        <a href="{{url_website}}" target="_blank" class="btn btn-primary mb-1">{{url_website}}</a>
+                        <a href="{{url_github}}" target="_blank" class="btn btn-primary">{{url_github}}</a>
+                        <p class="card-text mt-1">Created by: {{user.name}}</p>
+                        <a href="/project/{{_id}}/edit">Edit {{name}}</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+{{/each}}
        
-    </div>
-</div>
