@@ -38,6 +38,9 @@ app.use("/", webRoutes);
 const designRoutes = require("./routes/uidesign.routes");
 app.use("/", designRoutes);
 
+const profileRoutes = require("./routes/profile.routes");
+app.use("/", profileRoutes);
+
 const dataRoutes = require("./routes/data.routes");
 app.use("/", dataRoutes);
 
