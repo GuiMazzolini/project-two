@@ -28,10 +28,17 @@ const indexRoutes = require("./routes/index.routes");
 app.use("/", indexRoutes);
 
 const authRoutes = require("./routes/auth.routes");
-app.use("/auth", authRoutes);
+app.use("/", authRoutes);
 
 const webRoutes = require("./routes/webdev.routes");
-app.use("/webdev", webRoutes);
+app.use("/", webRoutes);
+
+const designRoutes = require("./routes/uidesign.routes");
+app.use("/", designRoutes);
+
+const dataRoutes = require("./routes/data.routes");
+app.use("/", dataRoutes);
+
 
 const projectRoutes = require("./routes/project.routes");
 app.use("/", projectRoutes);

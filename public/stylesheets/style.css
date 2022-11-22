@@ -34,3 +34,26 @@ img {
 #btn-add {
   width: 200px;
 }
+
+
+.navbar {
+  background-color: #990100;
+  width: 100%; }
+  .navbar .navbar-nav .nav-link {
+    color: #f2f2f2; }
+  .navbar .navbar-nav .nav-link:hover {
+    color: #f2f2f2;
+    background-color: #cf000070; }
+  .navbar .nav-item .dropdown,
+  .navbar .dropdown:hover {
+    color: #f2f2f2; }
+  .navbar .dropdown-menu {
+    background-color: #990100; }
+    .navbar .dropdown-menu .dropdown-item,
+    .navbar .dropdown-menu .dropdown-item {
+      color: #f2f2f2; }
+    .navbar .dropdown-menu .dropdown-item:focus,
+    .navbar .dropdown-menu .dropdown-item:hover {
+      background-color: #cf000070; 
+      }
+
