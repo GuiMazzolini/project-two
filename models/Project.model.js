@@ -9,10 +9,12 @@ const projectSchema = new Schema(
       unique: true,
       trim: true,
     },
-    course: {type: String,
-          required: true,
-          trim: true
+    course: {
+      type: String,
+      required: true,
+      trim: true,
         },
+        
     image: { type: String },
 
     description: {
@@ -24,7 +26,7 @@ const projectSchema = new Schema(
     
     url_github: { 
       type: String,
-      required: true
+      required: true,
     }
   },
   {
