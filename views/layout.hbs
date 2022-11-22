@@ -35,12 +35,24 @@
         </li> 
       </ul>
       
-      <form class="d-flex" role="search">
-        
+         {{#if user}}
+          <a href="/logout">
+            <button class="btn btn-primary btn-lg mt-3">Logout</button>
+            </a>
+        {{else}}
         <a href="/login">
             <button class="btn btn-primary btn-lg mt-3">Login</button>
             </a>
-      </form>
+        {{/if}}
+
+
+
+
+
+
+
+        
+
     </div>
   </div>
 </nav>

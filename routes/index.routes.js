@@ -6,7 +6,9 @@ const { isLoggedOut } = require('../middleware/isLoggedOut');
 
 /* GET home page */
 router.get("/", (req, res, next) => {
-  res.render("index");
+  console.log("user: ", req.session.currentUser)
+  const user = req.session.currentUser
+  res.render("index", { user });
 });
 
 module.exports = router;
