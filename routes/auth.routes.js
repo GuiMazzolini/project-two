@@ -12,8 +12,8 @@ const saltRounds = 10;
 const User = require("../models/User.model");
 
 // Require necessary (isLoggedOut and isLiggedIn) middleware in order to control access to specific routes
-const isLoggedOut = require("../middleware/isLoggedOut.js");
-const isLoggedIn = require("../middleware/isLoggedIn");
+const {isLoggedOut} = require("../middleware/isLoggedOut");
+const {isLoggedIn} = require("../middleware/isLoggedIn");
 
 // GET /auth/signup
 router.get("/signup", isLoggedOut, (req, res) => {
@@ -61,10 +61,10 @@ router.post("/signup", isLoggedOut, (req, res) => {
     .then((salt) => bcrypt.hash(password, salt))
     .then((hashedPassword) => {
       // Create a user and save it in the database
-      return User.create({ username, email, password: hashedPassword });
+      return User.create({ username, email: email.toLowerCase(), password: hashedPassword });
     })
     .then((user) => {
-      res.redirect("/auth/login");
+      res.redirect("/login");
     })
     .catch((error) => {
       if (error instanceof mongoose.Error.ValidationError) {
@@ -108,7 +108,7 @@ router.post("/login", isLoggedOut, (req, res, next) => {
   }
 
   // Search the database for a user with the email submitted in the form
-  User.findOne({ email })
+  User.findOne({ email: email.toLowerCase() })
     .then((user) => {
       // If the user isn't found, send an error message that user provided wrong credentials
       if (!user) {
@@ -130,7 +130,8 @@ router.post("/login", isLoggedOut, (req, res, next) => {
           }
 
           // Add the user object to the session object
-          req.session.currentUser = user.toObject();
+          // req.session.currentUser = user.toObject();
+          req.session.currentUser = user;
           // Remove the password field
           delete req.session.currentUser.password;
 
