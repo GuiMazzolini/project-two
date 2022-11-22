@@ -4,17 +4,19 @@ const Project = require("../models/Project.model")
 
 
 router.get("/", (req, res, next) => {
-  res.render("/");
+  const user = req.session.currentUser
+  res.render("/" , { user });
 });
 
 router.get("/project/create", (req, res, next) => {
-  res.render("add-project");
+  const user = req.session.currentUser
+  res.render("add-project" , { user });
 });
 
 router.post("/project/create", (req, res, next) => {
   // console.log(req.body);
   const { name, url_website, description, url_github, image, course } = req.body;
-
+  const user = req.session.currentUser
   Project.create({ name, url_website, description, url_github, image, course })
     .then(() => res.redirect("/"))
     .catch((error) => next(error));
