@@ -4,14 +4,12 @@ const Project = require("../models/Project.model")
 
 
 
-router.get("/", (req, res, next) => {
-  const user = req.session.currentUser
-  res.render("/" , { user });
 
 router.get("/webdev", (req, res, next) => {
   return Project.find({course: "Web Development"})
     .then((allTheWebDevFromDB) => {
-      res.render("web-dev", {project: allTheWebDevFromDB});
+      const user = req.session.currentUser
+      res.render("web-dev", {project: allTheWebDevFromDB, user});
     })
     .catch((error) => {
       console.log("Error while getting the projects from the DB: ", error);
@@ -22,7 +20,8 @@ router.get("/webdev", (req, res, next) => {
 router.get("/data", (req, res, next) => {
    return Project.find({course: "Data Analitcs"})
     .then((allTheDataFromDB) => {
-      res.render("data-analytics", {project: allTheDataFromDB});
+      const user = req.session.currentUser
+      res.render("data-analytics", {project: allTheDataFromDB, user});
     })
     .catch((error) => {
       console.log("Error while getting the projects from the DB: ", error);
@@ -33,7 +32,8 @@ router.get("/data", (req, res, next) => {
 router.get("/uidesign", (req, res, next) => {
   return Project.find({course: "UX UI"})
    .then((allTheUxFromDB) => {
-     res.render("uidesign", {project: allTheUxFromDB});
+    const user = req.session.currentUser
+     res.render("uidesign", {project: allTheUxFromDB, user});
    })
    .catch((error) => {
      console.log("Error while getting the projects from the DB: ", error);
@@ -62,13 +62,9 @@ router.get("/project/:projectId/edit", (req, res, next) => {
   })
 
 router.post("/project/create", (req, res, next) => {
-
-  const { name, url_website, description, url_github, image, course } = req.body;
-
-  const user = req.session.currentUser
-
-  console.log(req.body)
-
+const { name, url_website, description, url_github, image, course } = req.body;
+const user = req.session.currentUser
+console.log(req.body)
 
   Project.create({ name, url_website, description, url_github, image, course })
     .then(() => res.redirect("/"))
@@ -78,14 +74,13 @@ router.post("/project/create", (req, res, next) => {
 router.post("/project/:id/edit", (req, res, next) => {
   const id = req.params.id;
   const {  name, url_website, description, url_github, image, course  } = req.body;
+  const user = req.session.currentUser
 
   Project.findByIdAndUpdate( id ,
     {  name, url_website, description, url_github, image, course  },
-    { new: true }
-  )
+    { new: true })
     .then(updatedProject => res.redirect('/'))
     .catch((error) => next(error))
-})
-
+});
 
 module.exports = router;

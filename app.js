@@ -33,8 +33,7 @@ app.use("/", projectRoutes);
 const indexRoutes = require("./routes/index.routes");
 app.use("/", indexRoutes);
 
-const projectRoutes = require("./routes/project.routes");
-app.use("/", projectRoutes);
+
 
 
 const authRoutes = require("./routes/auth.routes");

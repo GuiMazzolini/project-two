@@ -12,14 +12,19 @@ h1 {
   color: 15px;
 }
 
-
 .footer {
   position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
+  height:5%;
   text-align: center;
-  background-color:#990100;
+  background-color:black;
+}
+
+.footer-text{
+  color:white;
+  text-decoration: none;
 }
 
 img {
@@ -35,7 +40,6 @@ img {
 #btn-add {
   width: 200px;
 }
-
 
 .navbar {
   background-color: #990100;
