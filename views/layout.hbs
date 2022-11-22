@@ -42,23 +42,39 @@
               <a class='nav-link' href='/data'>Data Analytics</a>
             </li>
           </ul>
-          <!--    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <a class="nav-link" href="#">LOGO HERE</a>
         </li> 
       </ul>
-     -->
 
-    
-
-          <form class='d-flex' role='search'>
-
-            <a href='/login'>
-              <button class='btn btn-primary btn-lg mt-3'>Login</button>
+      
+         {{#if user}}
+          <a href="/logout">
+            <button class="btn btn-primary btn-lg mt-3">Logout</button>
             </a>
+        {{else}}
+        <a href="/login">
+            <button class="btn btn-primary btn-lg mt-3">Login</button>
+            </a>
+        {{/if}}
 
+
+
+
+
+
+
+        
+
+    </div>
+  </div>
+</nav>
+<main>
+
+         
             
-          </form>
+          
         </div>
       </div>
     </nav>
