@@ -3,6 +3,11 @@ const router = express.Router();
 const Project = require("../models/Project.model")
 
 
+
+router.get("/", (req, res, next) => {
+  const user = req.session.currentUser
+  res.render("/" , { user });
+
 router.get("/webdev", (req, res, next) => {
   return Project.find({course: "Web Development"})
     .then((allTheWebDevFromDB) => {
@@ -34,10 +39,12 @@ router.get("/uidesign", (req, res, next) => {
      console.log("Error while getting the projects from the DB: ", error);
      next(error);
    });
+
 });
 
 router.get("/project/create", (req, res, next) => {
-  res.render("add-project");
+  const user = req.session.currentUser
+  res.render("add-project" , { user });
 });
 
 router.get("/project/:projectId/edit", (req, res, next) => {
@@ -57,7 +64,11 @@ router.get("/project/:projectId/edit", (req, res, next) => {
 router.post("/project/create", (req, res, next) => {
 
   const { name, url_website, description, url_github, image, course } = req.body;
+
+  const user = req.session.currentUser
+
   console.log(req.body)
+
 
   Project.create({ name, url_website, description, url_github, image, course })
     .then(() => res.redirect("/"))
