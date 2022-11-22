@@ -9,6 +9,10 @@ const projectSchema = new Schema(
       unique: true,
       trim: true,
     },
+    course: {type: String,
+          required: true,
+          trim: true
+        },
     image: { type: String },
 
     description: {
@@ -28,6 +32,6 @@ const projectSchema = new Schema(
   }
 );
 
-const Project = model("User", projectSchema);
+const Project = model("Project", projectSchema);
 
 module.exports = Project;

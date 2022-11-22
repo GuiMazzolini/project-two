@@ -1,28 +1,36 @@
-  <h1>Add a New Project!</h1>
+<h1>Add a New Project!</h1>
 
-        <hr />
-<div class="d-flex flex-column">
-<div class="col-md-6 mb-3">
-  <label for="formGroupExampleInput" class="form-label">Project Name:</label>
-  <input type="text" class="form-control" id="formGroupExampleInput" >
-</div>
-<div class="col-md-6 mb-3">
-  <label for="formGroupExampleInput2" class="form-label">Website URL:</label>
-  <input type="url" class="form-control" id="formGroupExampleInput2">
-</div>
-<div class="col-md-6 mb-3">
-  <label for="formGroupExampleInput2" class="form-label">GitHub URL:</label>
-  <input type="url" class="form-control" id="formGroupExampleInput2">
-</div>
-<div class="mb-3">
-  <label for="exampleFormControlTextarea1" class="form-label">Description:</label>
-  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-</div>
-
-<div class="mb-3">
-    <label for="formFile" class="form-label">Upload your Image:</label>
-    <input class="form-control" type="file" id="formFile">
+<hr />
+<form action="/project/create" method="post">
+  <div class="d-flex flex-column">
+    <div class="col-md-6 mb-3">
+      <label for="name" class="form-label">Project Name:</label>
+      <input type="text" class="form-control" name="name">
+    </div>
+    <label for="name" class="form-label">Choose your course:</label>
+    <select class="form-select form-select-md-6 mb-3" aria-label="Choose your course">
+      <option selected></option>
+      <option value="1">Web Development</option>
+      <option value="2">Data Analitcs</option>
+      <option value="3">UX UI</option>
+    </select>
+    <div class="col-md-6 mb-3">
+      <label for="website" class="form-label">Website URL:</label>
+      <input type="text" class="form-control" name="url_website">
+    </div>
+    <div class="col-md-6 mb-3">
+      <label for="github" class="form-label">GitHub URL:</label>
+      <input type="text" class="form-control" name="url_github">
+    </div>
+    <div class="mb-3">
+      <label for="description" class="form-label">Description:</label>
+      <textarea class="form-control" name="description" rows="3"></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="image" class="form-label">Upload your Image:</label>
+      <input class="form-control" type="file" name="image">
+    </div>
+      <input  type="submit" value="Create Project!" class="btn btn-primary" id="btn-add">
+    </div>
   </div>
-
-  </div>
-</div>
+</form>

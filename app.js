@@ -40,8 +40,8 @@ const dataRoutes = require("./routes/data.routes");
 app.use("/", dataRoutes);
 
 
-const gameRoutes = require("./routes/project.routes");
-app.use("/addproject", gameRoutes);
+const projectRoutes = require("./routes/project.routes");
+app.use("/", projectRoutes);
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);
