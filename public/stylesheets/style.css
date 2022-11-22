@@ -29,6 +29,8 @@ img {
 .title-container {
   text-align: center;
   margin-bottom: 20px;
+}
 
-
+#btn-add {
+  width: 200px;
 }
