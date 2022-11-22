@@ -1,5 +1,5 @@
 body {
-  padding: 50px;
+  padding: 0px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   align-items: center;
 }
@@ -19,6 +19,7 @@ h1 {
   bottom: 0;
   width: 100%;
   text-align: center;
+  background-color:#990100;
 }
 
 img {
