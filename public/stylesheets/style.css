@@ -2,6 +2,7 @@ body {
   padding: 0px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   align-items: center;
+  margin-bottom:50px !important;
 }
 
 a {
