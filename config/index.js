@@ -51,7 +51,7 @@ module.exports = (app) => {
     favicon(path.join(__dirname, "..", "public", "images", "favicon.ico"))
   );
 
-  // ℹ️ Middleware that adds a "req.session" information and later to check that you are who you say you are 😅
+  // Middleware that adds a "req.session" information and later to check that you are who you say you are 😅
   app.use(
     session({
       secret: process.env.SESSION_SECRET || "super hyper secret key",

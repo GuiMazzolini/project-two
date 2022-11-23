@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const Project = require("../models/Project.model")
-
+const Project = require("../models/Project.model");
+const {fileUploader , cloudinary} = require('../config/cloudinary.config');
+const { render } = require('../app');
 
 router.get("/webdev", (req, res, next) => {
   return Project.find({course: "Web Development"})
@@ -59,15 +60,28 @@ router.get("/project/:projectId/edit", (req, res, next) => {
     });
   })
 
-router.post("/project/create", (req, res, next) => {
-const { name, url_website, description, url_github, image, course } = req.body;
-const user = req.session.currentUser
-console.log(req.body)
+// router.post("/project/create", (req, res, next) => {
+// const { name, url_website, description, url_github, image, course } = req.body;
+// const user = req.session.currentUser
+// console.log(req.body)
 
-  Project.create({ name, url_website, description, url_github, image, course })
-    .then(() => res.redirect("/"))
-    .catch((error) => next(error));
+//   Project.create({ name, url_website, description, url_github, image, course })
+//     .then(() => res.redirect("/"))
+//     .catch((error) => next(error));
+// });
+router.post('/project/create', fileUploader.single('image'), (req, res) => {
+  const { name, course, url_website, url_github,description } = req.body;
+  console.log(req.file)
+  const image = req.file.path;
+ 
+  Project.create({  name, course, url_website, url_github, description, image})
+    .then(newlyCreatedMovieFromDB => {
+      console.log(newlyCreatedMovieFromDB);
+      res.redirect("/profile")
+    })
+    .catch(error => console.log(`Error while creating a new project: ${error}`));
 });
+
 
 router.post("/project/:id/edit", (req, res, next) => {
   const id = req.params.id;
