@@ -10,25 +10,25 @@
   </div>
 </div>
 
+{{#each project}}
+  <div class='col-12 col-md-5 col-xl-3 m-1 text-center'>
+    <div class='card' style='width: 18rem;'>
+      <h5 class='card-title mt-1'>{{name}}</h5>
+      <img src='../images/teste.jpg' class='card-img-top' alt='...' />
+      <div class='card-body'>
 
-<div class='col-12 col-md-5 col-xl-3 m-1 text-center'>
-  <div class='card' style='width: 18rem;'>
-    <h5 class='card-title mt-1'>Project Name</h5>
-    <img src='../images/teste.jpg' class='card-img-top' alt='...' />
-    <div class='card-body'>
-
-      <p class='description'> Project Description</p>
- 
-      <form role='search'>
-        <a href='/profile/edit'>
-          <button class='btn btn-primary btn-lg mt-3'>Edit Project</button>
-        </a>
-      </form>
-      <form role='search'>
-        <a href='/profile/delete'>
-          <button class='btn btn-primary btn-lg mt-3'>Delete Project</button>
-        </a>
-      </form>
+        <p class='description'>{{description}}</p>
+  
+        <form role='search'>
+          <a href='/project/{{_id}}/edit' class='btn btn-primary btn-lg mt-3'> Edit Project </a>
+          
+        </form>
+        <form role='search'>
+          <a href='/project/{{_id}}/delete' class='btn btn-primary btn-lg mt-3'>Delete Project</a>
+          
+          
+        </form>
+      </div>
     </div>
   </div>
-</div>
+{{/each}}

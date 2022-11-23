@@ -24,6 +24,8 @@ const projectSchema = new Schema(
     },
     url_website: { type: String },
     
+    user: { type: Schema.Types.ObjectId, ref: "User", required: true },
+
     url_github: { 
       type: String,
       required: true,
