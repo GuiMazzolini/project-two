@@ -3,11 +3,6 @@ const router = express.Router();
 const Project = require("../models/Project.model")
 
 
-
-router.get("/", (req, res, next) => {
-  const user = req.session.currentUser
-  res.render("/" , { user });
-
 router.get("/webdev", (req, res, next) => {
   return Project.find({course: "Web Development"})
     .then((allTheWebDevFromDB) => {
