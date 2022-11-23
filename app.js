@@ -34,8 +34,6 @@ const indexRoutes = require("./routes/index.routes");
 app.use("/", indexRoutes);
 
 
-
-
 const authRoutes = require("./routes/auth.routes");
 app.use("/", authRoutes);
 
