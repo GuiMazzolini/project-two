@@ -23,18 +23,27 @@ const projectName = "project-two";
 
 app.locals.appTitle = `${capitalize(projectName)} created with IronLauncher`;
 
+const session = require("express-session")
+const MongoStore = require("connect-mongo")
+
+  // ℹ️ Middleware that adds a "req.session" information and later to check that you are who you say you are 😅
+  app.use(
+    session({
+      secret: process.env.SESSION_SECRET || "super hyper secret key",
+      resave: true,
+      saveUninitialized: true,
+      store: MongoStore.create({
+        mongoUrl: process.env.MONGODB_URI
+      }),
+    })
+  );
+
 const projectRoutes = require("./routes/project.routes");
 app.use("/", projectRoutes);
 // 👇 Start handling routes here
 
-
-
-
 const indexRoutes = require("./routes/index.routes");
 app.use("/", indexRoutes);
-
-
-
 
 const authRoutes = require("./routes/auth.routes");
 app.use("/", authRoutes);
