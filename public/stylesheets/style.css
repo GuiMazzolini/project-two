@@ -3,11 +3,13 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   align-items: center;
   margin-bottom:50px !important;
+  background-color: #d2d4c8 !important;
 }
 
 a {
   color: #00b7ff;
 }
+
 
 h1 {
   color: 15px;
@@ -63,3 +65,13 @@ img {
       background-color: #cf000070; 
       }
 
+.card-img {
+  width: 100% !important;
+  height: auto !important;
+}
+
+.description {
+  overflow: auto !important;
+  width: 200px !important;
+  height: 100px !important;
+}
