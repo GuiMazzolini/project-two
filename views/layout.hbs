@@ -48,13 +48,18 @@
             </li>
         {{else}}
         <li class='nav-item'>
-              <a class='nav-link'  href='/login'>Login</a>
+              <a class='nav-link' href="/login" data-bs-toggle="modal" data-bs-target="#modalLoginForm">Login</a>
             </li>
         {{/if}}
          </ul>
     </div>
   </div>
 </nav>
+<!-- {> loginpartial}
+<div class="text-center">
+  <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalLoginForm">Launch
+    Modal Login Form</a>
+</div> -->
 <main>
       {{{body}}}
 </main>
