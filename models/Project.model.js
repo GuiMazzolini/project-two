@@ -15,7 +15,7 @@ const projectSchema = new Schema(
       trim: true,
         },
         
-    image: { type: String },
+    image: {type: String},
 
     description: {
       type: String,
