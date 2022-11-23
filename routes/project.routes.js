@@ -104,14 +104,14 @@ router.post('/project/create', fileUploader.single('image'), (req, res) => {
   const { name, course, url_website, url_github,description } = req.body;
   console.log(req.file)
   const image = req.file.path;
- 
+
   Project.create({  name, course, url_website, url_github, description, image})
     .then(newlyCreatedMovieFromDB => {
       console.log(newlyCreatedMovieFromDB);
       res.redirect("/profile")
     })
     .catch(error => console.log(`Error while creating a new project: ${error}`));
-
+  })
 
 
 router.post("/project/create", (req, res, next) => {
