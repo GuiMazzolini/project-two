@@ -1,34 +1,32 @@
-<div class='d-flex justify-content-center'>
-  <div class='info'>
-    <h1 class='text-center mt-5'>Welcome "USERNAME COMES HERE"</h1>
+<div class='container'>
+  <div class='col text-center'>
+    <h1 class='text-center mt-5'>Welcome {{user.username}}</h1>
     <!-- <H2>{{user.name}}</H2> -->
     <div class='d-grid mt-3'>
        <a href="/project/create">
-      <button class='btn btn-primary col-6' type='button'>Add a project</button>
+      <button class='btn btn-primary col-2' type='button'>Add a project</button>
        </a>
     </div>
   </div>
 </div>
 
+{{#each project}}
+  <div class='col-12 col-md-5 col-xl-3 m-1 text-center'>
+    <div class='card' style='width: 18rem;'>
+      <h5 class='card-title mt-1'>{{name}}</h5>
+       <img src={{image}} class='card-img-top' alt='...' />
+      <div class='card-body'>
+        <p class='description'>{{description}}</p>
+          <form role='search'>
+          <a href='/project/{{_id}}/edit' class='btn btn-primary btn-lg mt-3'> Edit Project </a>    
+        </form>
+        <form role='search'>
+          <a href='/project/{{_id}}/delete' class='btn btn-primary btn-lg mt-3'>Delete Project</a>
+          
+          
+        </form>
+      </div>
 
-<div class='col-12 col-md-5 col-xl-3 m-1 text-center'>
-  <div class='card' style='width: 18rem;'>
-    <h5 class='card-title mt-1'>Project Name</h5>
-    <img src={{image}} class='card-img-top' alt='...' />
-    <div class='card-body'>
-
-      <p class='description'> Project Description</p>
- 
-      <form role='search'>
-        <a href='/profile/edit'>
-          <button class='btn btn-primary btn-lg mt-3'>Edit Project</button>
-        </a>
-      </form>
-      <form role='search'>
-        <a href='/profile/delete'>
-          <button class='btn btn-primary btn-lg mt-3'>Delete Project</button>
-        </a>
-      </form>
     </div>
   </div>
-</div>
+{{/each}}

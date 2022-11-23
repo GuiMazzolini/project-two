@@ -51,6 +51,7 @@ module.exports = (app) => {
     favicon(path.join(__dirname, "..", "public", "images", "favicon.ico"))
   );
 
+
   // Middleware that adds a "req.session" information and later to check that you are who you say you are 😅
   app.use(
     session({
@@ -62,4 +63,5 @@ module.exports = (app) => {
       }),
     })
   );
+
 };

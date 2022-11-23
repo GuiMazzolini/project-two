@@ -2,6 +2,7 @@ body {
   padding: 0px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   align-items: center;
+  margin-bottom:50px !important;
 }
 
 a {
@@ -48,7 +49,7 @@ img {
     color: #f2f2f2; }
   .navbar .navbar-nav .nav-link:hover {
     color: #f2f2f2;
-    background-color: #cf000070; }
+    color: #cf000070; }
   .navbar .nav-item .dropdown,
   .navbar .dropdown:hover {
     color: #f2f2f2; }

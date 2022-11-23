@@ -19,11 +19,11 @@ const userSchema = new Schema(
     password: {
       type: String,
       required: true,
-    }
+    },
+      projects: [{ type: Schema.Types.ObjectId, ref: "Project", required: false }],
   },
   {
-    // this second object adds extra properties: `createdAt` and `updatedAt`
-    timestamps: true,
+   timestamps: true,
   }
 );
 
