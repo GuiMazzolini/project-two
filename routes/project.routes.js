@@ -16,6 +16,7 @@ router.get("/webdev", (req, res, next) => {
 });
 
 router.get("/data", (req, res, next) => {
+  console.log("USER: ", req.session.currentUser)
    return Project.find({course: "Data Analitcs"})
     .then((allTheDataFromDB) => {
       const user = req.session.currentUser
