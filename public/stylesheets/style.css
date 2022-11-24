@@ -3,7 +3,7 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   align-items: center;
   margin-bottom:50px !important;
-  background-color: #d2d4c8 !important;
+  /* background-color: #d2d4c8 !important; */
 }
 
 a {
@@ -73,30 +73,38 @@ img {
   background-color: #990100;
   width: 100%; }
   .navbar .navbar-nav .nav-link {
-    color: #f2f2f2; }
+    color:  black; }
   .navbar .navbar-nav .nav-link:hover {
     color: #f2f2f2;
-    color: #cf000070; }
+    color: blue; }
   .navbar .nav-item .dropdown,
   .navbar .dropdown:hover {
     color: #f2f2f2; }
   .navbar .dropdown-menu {
-    background-color: #990100; }
+    background-color: blue; }
     .navbar .dropdown-menu .dropdown-item,
     .navbar .dropdown-menu .dropdown-item {
       color: #f2f2f2; }
     .navbar .dropdown-menu .dropdown-item:focus,
     .navbar .dropdown-menu .dropdown-item:hover {
-      background-color: #cf000070; 
+      background-color: blue; 
       }
 
 .card-img {
   width: 100% !important;
-  height: auto !important;
+  height: 100px !important;
+}
+
+.contain {
+  object-fit: contain !important;
 }
 
 .description {
   overflow: auto !important;
   width: 200px !important;
   height: 100px !important;
+}
+
+.btnconect {
+  width: 250px;
 }
