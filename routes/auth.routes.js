@@ -35,13 +35,13 @@ router.post("/signup", isLoggedOut, (req, res) => {
     return;
   }
 
-  if (password.length < 6) {
+ /* if (password.length < 6) {
     res.status(400).render("index", {
       errorMessage: "Your password needs to be at least 6 characters long. Please try again.",
     });
 
     return;
-  }
+   }*/ 
 
   //   ! This regular expression checks password for special characters and minimum length
   /*
@@ -65,7 +65,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
       return User.create({ username, email: email.toLowerCase(), password: hashedPassword });
     })
     .then((user) => {
-      res.redirect("/login");
+      res.redirect("/");
     })
     .catch((error) => {
       if (error instanceof mongoose.Error.ValidationError) {
@@ -103,12 +103,12 @@ router.post("/login", isLoggedOut, (req, res, next) => {
 
   // Here we use the same logic as above
   // - either length based parameters or we check the strength of a password
-  if (password.length < 6) {
+  /* if (password.length < 6) {
     return res.status(400).render("index", {
       errorMessage: "Your password needs to be at least 6 characters long.Please try again.",
     });
   }
-
+*/
   // Search the database for a user with the email submitted in the form
   User.findOne({ email: email.toLowerCase() })
     .then((user) => {
