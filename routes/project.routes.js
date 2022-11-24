@@ -97,14 +97,19 @@ router.post('/project/create', fileUploader.single('image'), (req, res) => {
   const user = req.session.currentUser
 
   Project.create({  name, course, url_website, url_github, description, image, user})
+
     .then(newProject => {
+
       res.redirect("/profile")
     })
     .catch(error => console.log(`Error while creating a new project: ${error}`));
   })
 
 
+
+=======
 router.post("/project/:id/edit", fileUploader.single('image'), (req, res, next) => {
+
   const id = req.params.id;
   
   if (req.file) {
@@ -131,3 +136,4 @@ router.post("/project/:id/edit", fileUploader.single('image'), (req, res, next) 
 });
 
 module.exports = router;
+
