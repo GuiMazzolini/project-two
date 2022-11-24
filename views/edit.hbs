@@ -1,34 +1,34 @@
 <h1>Edit your Project: {{name}}</h1>
 
 <hr />
-<form action="/project/{{_id}}/edit" method="post">
+<form action="/project/{{_id}}/edit" method="post" enctype="multipart/form-data">
   <div class="d-flex flex-column">
     <div class="col-md-6 mb-3">
       <label for="name" class="form-label">Project Name:</label>
-      <input type="text" class="form-control" name="name" value="{{name}}">
+      <input type="text" class="form-control" name="name" value={{name}}>
     </div>
     <label for="name" class="form-label">Choose your course:</label>
     <select class="form-select form-select-md-6 mb-3" aria-label="Choose your course" name="course">
       <option selected></option>
       <option value="Web Development" name="{{course}}">Web Development</option>
-      <option value="Data Analitcs" name="{{course}}">Data Analitcs</option>
+      <option value="Data Analytics" name="{{course}}">Data Analytics</option>
       <option value="UX UI" name="{{course}}">UX UI</option>
     </select>
     <div class="col-md-6 mb-3">
       <label for="website" class="form-label">Website URL:</label>
-      <input type="text" class="form-control" name="url_website" value="{{url_website}}">
+      <input type="text" class="form-control" name="url_website" value={{url_website}}>
     </div>
     <div class="col-md-6 mb-3">
       <label for="github" class="form-label">GitHub URL:</label>
-      <input type="text" class="form-control" name="url_github" value="{{url_github}}">
+      <input type="text" class="form-control" name="url_github" value={{url_github}}>
     </div>
     <div class="mb-3">
       <label for="description" class="form-label">Description:</label>
-      <textarea class="form-control" name="description" rows="3" value="{{description}}"></textarea>
+      <textarea class="form-control" name="description" rows="3" >{{description}}</textarea>
     </div>
     <div class="mb-3">
       <label for="image" class="form-label">Upload your Image:</label>
-      <input class="form-control" type="file" name="image" value="{{image}}">
+      <input class="form-control" type="file" name="image" value={{image}}>
     </div>
       <input  type="submit" value="Save changes!" class="btn btn-primary" id="btn-add" >
     </div>

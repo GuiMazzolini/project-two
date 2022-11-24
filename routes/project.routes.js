@@ -3,7 +3,7 @@ const router = express.Router();
 
 const Project = require("../models/Project.model");
 const {fileUploader , cloudinary} = require('../config/cloudinary.config');
-const { render } = require('../app');
+
 
 const User = require("../models/User.model")
 
@@ -22,7 +22,7 @@ router.get("/webdev", (req, res, next) => {
 
 router.get("/data", (req, res, next) => {
   console.log("USER: ", req.session.currentUser)
-   return Project.find({course: "Data Analitcs"})
+   return Project.find({course: "Data Analytics"})
     .then((allTheDataFromDB) => {
       const user = req.session.currentUser
       res.render("data-analytics", {project: allTheDataFromDB, user});
@@ -90,52 +90,44 @@ router.get("/project/:projectId/edit", (req, res, next) => {
     });
   })
 
-
-// router.post("/project/create", (req, res, next) => {
-// const { name, url_website, description, url_github, image, course } = req.body;
-// const user = req.session.currentUser
-// console.log(req.body)
-
-//   Project.create({ name, url_website, description, url_github, image, course })
-//     .then(() => res.redirect("/"))
-//     .catch((error) => next(error));
-// });
 router.post('/project/create', fileUploader.single('image'), (req, res) => {
-  const { name, course, url_website, url_github,description } = req.body;
-  console.log(req.file)
+  
+  const { name, course, url_website, url_github, description } = req.body;
   const image = req.file.path;
+  const user = req.session.currentUser
 
-  Project.create({  name, course, url_website, url_github, description, image})
-    .then(newlyCreatedMovieFromDB => {
-      console.log(newlyCreatedMovieFromDB);
+  Project.create({  name, course, url_website, url_github, description, image, user})
+    .then(newProject => {
       res.redirect("/profile")
     })
     .catch(error => console.log(`Error while creating a new project: ${error}`));
   })
 
 
-router.post("/project/create", (req, res, next) => {
-const { name, url_website, description, url_github, image, course} = req.body;
-const user = req.session.currentUser
-console.log(req.body)
-
-  Project.create({ name, url_website, description, url_github, image, course , user})
-    .then(() => res.redirect("/profile"))
-    .catch((error) => next(error));
-
-});
-
-
-router.post("/project/:id/edit", (req, res, next) => {
+router.post("/project/:id/edit", fileUploader.single('image'), (req, res, next) => {
   const id = req.params.id;
-  const {  name, url_website, description, url_github, image, course, projects  } = req.body;
-  const user = req.session.currentUser
+  
+  if (req.file) {
+    const image = req.file.path;
+    const {  name, url_website, description, url_github, course, projects  } = req.body;
+    const user = req.session.currentUser
+  
+    Project.findByIdAndUpdate( id ,
+      {  name, url_website, description, url_github, image, course, projects  },
+      { new: true })
+      .then(updatedProject => res.redirect('/profile'))
+      .catch((error) => next(error))
 
-  Project.findByIdAndUpdate( id ,
-    {  name, url_website, description, url_github, image, course, projects  },
-    { new: true })
-    .then(updatedProject => res.redirect('/profile'))
-    .catch((error) => next(error))
+  } else {
+    const {  name, url_website, description, url_github, course, projects  } = req.body;
+    const user = req.session.currentUser
+  
+    Project.findByIdAndUpdate( id ,
+      {  name, url_website, description, url_github, course, projects  },
+      { new: true })
+      .then(updatedProject => res.redirect('/profile'))
+      .catch((error) => next(error))
+  }
 });
 
 module.exports = router;
