@@ -28,7 +28,6 @@ a {
       opacity: 1;
     }
     
- 
     60% {
       margin-top: -20%;
 
@@ -43,7 +42,9 @@ a {
     }
   }
 
-
+.modal-content{
+  Background-color: #d2d4c8 !important;
+}
 
 h1 {
   color: 15px;
@@ -123,4 +124,9 @@ img {
 
 .btnconect {
   width: 250px;
+}
+
+.submit{
+  background-color:white !important;
+  font-weight:bold !important;
 }
