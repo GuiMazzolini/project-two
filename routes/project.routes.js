@@ -3,7 +3,7 @@ const router = express.Router();
 
 const Project = require("../models/Project.model");
 const {fileUploader , cloudinary} = require('../config/cloudinary.config');
-const { render } = require('../app');
+
 
 const User = require("../models/User.model")
 
@@ -104,8 +104,9 @@ router.post('/project/create', fileUploader.single('image'), (req, res) => {
   const { name, course, url_website, url_github,description } = req.body;
   console.log(req.file)
   const image = req.file.path;
+  const user = req.session.currentUser
 
-  Project.create({  name, course, url_website, url_github, description, image})
+  Project.create({  name, course, url_website, url_github, description, image, user})
     .then(newlyCreatedMovieFromDB => {
       console.log(newlyCreatedMovieFromDB);
       res.redirect("/profile")
@@ -114,16 +115,6 @@ router.post('/project/create', fileUploader.single('image'), (req, res) => {
   })
 
 
-router.post("/project/create", (req, res, next) => {
-const { name, url_website, description, url_github, image, course} = req.body;
-const user = req.session.currentUser
-console.log(req.body)
-
-  Project.create({ name, url_website, description, url_github, image, course , user})
-    .then(() => res.redirect("/profile"))
-    .catch((error) => next(error));
-
-});
 
 
 router.post("/project/:id/edit", (req, res, next) => {
@@ -139,3 +130,4 @@ router.post("/project/:id/edit", (req, res, next) => {
 });
 
 module.exports = router;
+

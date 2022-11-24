@@ -16,27 +16,28 @@ const {isLoggedOut} = require("../middleware/isLoggedOut");
 const {isLoggedIn} = require("../middleware/isLoggedIn");
 
 // GET /auth/signup
-router.get("/signup", isLoggedOut, (req, res) => {
-  res.render("auth/signup");
-});
+// router.get("/signup", isLoggedOut, (req, res) => {
+ // res.render("auth/signup");
+// });
 
 // POST /auth/signup
 router.post("/signup", isLoggedOut, (req, res) => {
   const { username, email, password } = req.body;
+  console.log(req.body)
 
   // Check that username, email, and password are provided
   if (username === "" || email === "" || password === "") {
-    res.status(400).render("auth/signup", {
+    res.status(400).render("index", {
       errorMessage:
-        "All fields are mandatory. Please provide your username, email and password.",
+        "All fields are mandatory. You need to provide your username, email and password. Please try again.",
     });
 
     return;
   }
 
   if (password.length < 6) {
-    res.status(400).render("auth/signup", {
-      errorMessage: "Your password needs to be at least 6 characters long.",
+    res.status(400).render("index", {
+      errorMessage: "Your password needs to be at least 6 characters long. Please try again.",
     });
 
     return;
@@ -68,9 +69,9 @@ router.post("/signup", isLoggedOut, (req, res) => {
     })
     .catch((error) => {
       if (error instanceof mongoose.Error.ValidationError) {
-        res.status(500).render("auth/signup", { errorMessage: error.message });
+        res.status(500).render("index", { errorMessage: error.message });
       } else if (error.code === 11000) {
-        res.status(500).render("auth/signup", {
+        res.status(500).render("index", {
           errorMessage:
             "Username and email need to be unique. Provide a valid username or email.",
         });
@@ -90,11 +91,11 @@ router.post("/login", isLoggedOut, (req, res, next) => {
   
   const { username, email, password } = req.body;
 
-  // Check that username, email, and password are provided
-  if (username === "" || email === "" || password === "") {
-    res.status(400).render("auth/login", {
+  // Check that  email, and password are provided
+  if ( email === "" || password === "") {
+    res.status(400).render("index", {
       errorMessage:
-        "All fields are mandatory. Please provide username, email and password.",
+        "All fields are mandatory. Please provide email and password.",
     });
 
     return;
@@ -103,8 +104,8 @@ router.post("/login", isLoggedOut, (req, res, next) => {
   // Here we use the same logic as above
   // - either length based parameters or we check the strength of a password
   if (password.length < 6) {
-    return res.status(400).render("auth/login", {
-      errorMessage: "Your password needs to be at least 6 characters long.",
+    return res.status(400).render("index", {
+      errorMessage: "Your password needs to be at least 6 characters long.Please try again.",
     });
   }
 
