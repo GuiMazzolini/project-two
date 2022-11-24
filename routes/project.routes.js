@@ -116,9 +116,8 @@ Project.create({  name, course, url_website, url_github, description, user})
 })
 
 
-
-
 router.post("/project/:id/edit", fileUploader.single('image'), (req, res, next) => {
+
   const id = req.params.id;
   
   if (req.file) {
@@ -145,3 +144,4 @@ router.post("/project/:id/edit", fileUploader.single('image'), (req, res, next) 
 });
 
 module.exports = router;
+
