@@ -70,7 +70,7 @@ router.get("/project/:projectId/edit", (req, res, next) => {
 //     .catch((error) => next(error));
 // });
 router.post('/project/create', fileUploader.single('image'), (req, res) => {
-  const { name, course, url_website, url_github,description } = req.body;
+  const { name, course, url_website, url_github, description } = req.body;
   console.log(req.file)
   const image = req.file.path;
  
