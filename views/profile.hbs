@@ -16,13 +16,15 @@
 {{#each project}} 
   <div class='col-sm-12 col-md-6 col-xl-3 m-1 card mb-5'>
       <h5 class='card-title mt-1'>{{name}}</h5>
-
-      <img src={{image}} class="mx-auto d-block contain " alt='...' />
+        {{#if image}}
+          <img src={{image}} class="card-img-top card-img">
+        {{else}}
+          <img src="../images/defaultimage.jpg" class="card-img-top card-img">
+        {{/if}}
       <div class='card-body'>
         <p class='description mx-auto d-block'>{{description}}</p>
         <form role='search'>
           <a href='/project/{{_id}}/edit' class='btn btn-secondary mt-1'> Edit Project </a>
-
         </form>
         <form role='search'>
           <a href='/project/{{_id}}/delete' class='btn btn-outline-secondary btn-sm mt-0.5'>Delete</a>

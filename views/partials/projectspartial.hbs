@@ -1,0 +1,31 @@
+<div class="container text-center">
+    <div class="row justify-content-evenly">
+        {{#each project}}
+        <div class='col-sm-12 col-md-6 col-xl-3 m-1 card mb-5'>
+            <h5 class="card-title mt-2 mb-2">{{name}}</h5>
+            {{#if image}}
+            <img src={{image}} class="card-img-top card-img">
+            {{else}}
+            <img src="../images/defaultimage.jpg" class="card-img-top card-img">
+            {{/if}}
+            <div class="card-body">
+                <p class="description mx-auto d-block">{{description}}</p>
+                {{#if url_website}}
+                <a href={{url_website}} target="_blank" class="btnconect btn btn-primary mb-1 text-wrap">Go to Project
+                    URL</a> <br>
+                {{else}}
+                <br>
+                {{/if}}
+
+                {{#if url_github}}
+                <a href={{url_github}} target="_blank" class="btnconect btn btn-primary text-wrap">Go to Github</a>
+                {{else}}
+                <br>
+                {{/if}}
+                <p class="card-text mt-2">Created by: <strong>{{user.username}}</strong></p>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>
+

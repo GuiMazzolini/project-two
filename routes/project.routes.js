@@ -9,7 +9,7 @@ const User = require("../models/User.model")
 
 
 router.get("/webdev", (req, res, next) => {
-  return Project.find({course: "Web Development"})
+  return Project.find({course: "Web Development"}).populate("user")
     .then((allTheWebDevFromDB) => {
       const user = req.session.currentUser
       res.render("web-dev", {project: allTheWebDevFromDB, user});
@@ -92,16 +92,30 @@ router.get("/project/:projectId/edit", (req, res, next) => {
 
 router.post('/project/create', fileUploader.single('image'), (req, res) => {
   
-  const { name, course, url_website, url_github, description } = req.body;
-  const image = req.file.path;
-  const user = req.session.currentUser
-
+  if (req.file) {
+    const { name, course, url_website, url_github, description } = req.body;
+    const image = req.file.path;
+    const user = req.session.currentUser
+    
   Project.create({  name, course, url_website, url_github, description, image, user})
-    .then(newProject => {
-      res.redirect("/profile")
-    })
-    .catch(error => console.log(`Error while creating a new project: ${error}`));
+  .then(newProject => {
+    res.redirect("/profile")
   })
+  .catch(error => console.log(`Error while creating a new project: ${error}`));
+} else {
+  const { name, course, url_website, url_github, description } = req.body;
+  const user = req.session.currentUser
+  
+Project.create({  name, course, url_website, url_github, description, user})
+.then(newProject => {
+  res.redirect("/profile")
+})
+.catch(error => console.log(`Error while creating a new project: ${error}`));
+}
+
+})
+
+
 
 
 router.post("/project/:id/edit", fileUploader.single('image'), (req, res, next) => {
