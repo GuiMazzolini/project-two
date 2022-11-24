@@ -155,7 +155,7 @@ router.get("/logout", (req, res) => {
     }
     req.session = null
     console.log("worked")
-    res.redirect("/profile");
+    res.redirect("/");
   });
 });
 
