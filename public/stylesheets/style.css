@@ -17,7 +17,7 @@ a {
   opacity: 0;
   background-color: black !important;
   color:white !important;
-  animation: animationName 5s ;
+  animation: animationName 6s ;
   text-align:center;
   }
   
@@ -35,11 +35,7 @@ a {
       opacity: 1;
     }
     
-    100% {
-      margin-top: -400px;
-
-      opacity: 0.8 ;
-    }
+  
   }
 
 .modal-content{
