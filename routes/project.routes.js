@@ -22,7 +22,7 @@ router.get("/webdev", (req, res, next) => {
 
 router.get("/data", (req, res, next) => {
   console.log("USER: ", req.session.currentUser)
-   return Project.find({course: "Data Analytics"})
+   return Project.find({course: "Data Analytics"}).populate("user")
     .then((allTheDataFromDB) => {
       const user = req.session.currentUser
       res.render("data-analytics", {project: allTheDataFromDB, user});
@@ -34,7 +34,7 @@ router.get("/data", (req, res, next) => {
 });
 
 router.get("/uidesign", (req, res, next) => {
-  return Project.find({course: "UX UI"})
+  return Project.find({course: "UX UI"}).populate("user")
    .then((allTheUxFromDB) => {
     const user = req.session.currentUser
      res.render("uidesign", {project: allTheUxFromDB, user});
