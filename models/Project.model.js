@@ -19,7 +19,6 @@ const projectSchema = new Schema(
 
     description: {
       type: String,
-      required: true,
       trim: true,
     },
     url_website: { type: String },
