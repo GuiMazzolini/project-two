@@ -8,7 +8,6 @@ const hbs = require("hbs");
 const path = require("path");
 const app = express();
 
-
 app.set("view engine", "hbs");
 hbs.registerPartials(path.join(__dirname, "views/partials"));
 require("./config")(app);
