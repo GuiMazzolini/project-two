@@ -26,7 +26,8 @@ const MongoStore = require("connect-mongo")
       resave: true,
       saveUninitialized: true,
       store: MongoStore.create({
-        mongoUrl: "mongodb://localhost:27017/iron-library"
+        mongoUrl: "mongodb://localhost:27017/iron-library",
+        clientPromise: mongoose.connection.asPromise(),
       }),
     })
   );
